@@ -2,32 +2,32 @@ import random
 
 def toss():
     '''This funtion is use for toss'''
-    tosschoice =input(f"{pler1} and {pler2} please choose head and Tale respectively: ").split(" ")
+    tosschoice =input(f"{pler1} & {pler2} choose Head and Tale respectively: ").split(" ")
     while not('head' in tosschoice and 'tale' in tosschoice):
-        tosschoice = input("Please Re-enter Head and Tale by giving single space: ").lower().split(" ")
+        tosschoice = input("Re-enter Head and Tale by giving single space: ").lower().split(" ")
     coin_f = random.choice(tosschoice)
     if coin_f == tosschoice[0]:
-        print(f"it's{coin_f}, {pler1} you won the toss.")
-        return pler1
+        print(f"\nit's {coin_f},\n{pler1}, You Won the toss.")
+        return pler1, pler2
     else:
-        print(f"it's{coin_f}, {pler2} you won the toss.")
-        return pler2
+        print(f"\nit's {coin_f},\n{pler2}, You Won the toss.")
+        return pler2, pler1
 
 def matchReplay():
-    return input("Do you wanna play again(Y/N)?").upper().startswith('Y')
+    return input("Wanna play again(Y/N)?").upper().startswith('Y')
         
 def plyMarkChoice(tosswinner):   
     markers=''
     while not(markers=='X' or markers=='O'):
-        ply1 = input(f"As {tosswinner} you won the Toss so Please choose 'X' or 'O': ").upper()
+        ply1 = input("\nChoose 'X' or 'O': ").upper()
         if not(ply1 == 'X' or ply1 == 'O'):
             plyMarkChoice(tosswinner)
         else:
             if ply1 == 'X':
-                print(f"{tosswinner} As a Toss winner you Chose 'X'. So, second player will have 'O'.")
+                print(f"\n{tosswinner} have 'X'.\nSo, {tosslooser} will have 'O'.")
                 return ('X','O')
             else :
-                print(f"{tosswinner} As a Toss winner you Chose 'O', So, second player will have 'X'.")
+                print(f"\n{tosswinner} have 'O',\nSo, {tosslooser} will have 'X'.")
                 return ('O','X')
 
 def creat_Tble(mark_position,markers):
@@ -39,20 +39,20 @@ def creat_Tble(mark_position,markers):
     print(num_ls[1]+' | '+num_ls[2]+' | '+num_ls[3])
 
 def player1_choice():
-    mark_p = int (input('You are Player1, where do you wanna to mark on 1-9: '))
+    mark_p = int (input(f"\n{tosswinner},\nyou wanna mark on(1-9):\n "))
     if mark_p not in range(1,10):
         player1_choice()
     if num_ls[mark_p] != " ":
-        print("This place is already taken. Please mark somewhere else within range")
+        print("This place is already taken.\n")
         player1_choice()
     return mark_p
 
 def player2_choice():
-    mark_p = int (input('You are Player2, where do you wanna to mark on 1-9: '))
+    mark_p = int (input(f"\n{tosslooser},\nyou wanna mark on:\n "))
     if mark_p not in range(1,10):
         player2_choice()
     if num_ls[mark_p] != " ":
-        print("This place is already taken. Please mark somewhere else within range")
+        print("This place is already taken.\n")
         player2_choice()
     return mark_p
 
@@ -83,13 +83,13 @@ def winnercheck():
 
 while True:   
     num_ls = ['1'," "," "," "," "," "," "," "," "," "]
-    print('Lets Play the Tic Tac toe Game\n')
-    pler1 = input("Please Enter 1st player name: ")
-    pler2 = input("Please Enter 2st player name: ")
-    print("First lets have Toss\n")
+    print('Welcome To Tic Tac Toe Game!\n')
+    pler1 = input("1st player name: ")
+    pler2 = input("2st player name: ")
+    print("\nToss First\n")
     
 
-    tosswinner =toss()
+    tosswinner, tosslooser =toss()
     ply1,ply2 = plyMarkChoice(tosswinner)
     
     while check_Space() == True:
