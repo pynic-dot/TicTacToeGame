@@ -42,18 +42,18 @@ def player1_choice():
     mark_p = int (input('You are Player1, where do you wanna to mark on 1-9: '))
     if mark_p not in range(1,10):
         player1_choice()
-        if num_ls[mark_p] != " ":
-            print("This place is already taken. Please mark somewhere else within range")
-            player1_choice()
+    if num_ls[mark_p] != " ":
+        print("This place is already taken. Please mark somewhere else within range")
+        player1_choice()
     return mark_p
 
 def player2_choice():
     mark_p = int (input('You are Player2, where do you wanna to mark on 1-9: '))
     if mark_p not in range(1,10):
         player2_choice()
-        if num_ls[mark_p] != " ":
-            print("This place is already taken. Please mark somewhere else within range")
-            player2_choice()
+    if num_ls[mark_p] != " ":
+        print("This place is already taken. Please mark somewhere else within range")
+        player2_choice()
     return mark_p
 
 def check_Space():
